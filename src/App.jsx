@@ -18,8 +18,22 @@ function App() {
           </ProtectedRoute>
         }
       />
-      <Route path="/admin" element={<Admin />} />
-      <Route path="/user" element={<User />} />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute requiredAdmin="admin">
+            <Admin />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/user"
+        element={
+          <ProtectedRoute>
+            <User />
+          </ProtectedRoute>
+        }
+      />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
       auth dashboard
     </Routes>
